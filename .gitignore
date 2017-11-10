@@ -1,0 +1,4 @@
+# Packer Related Directories
+packer_cache/*
+output-*/*
+output/*
