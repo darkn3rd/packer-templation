@@ -1,0 +1,70 @@
+{
+  "variables": {
+    "username": "vagrant",
+    "password": "vagrant",
+    "build_cpus": "4",
+    "build_memory": "4096"
+  },
+  "builders":[
+    {
+      "type": "virtualbox-ovf",
+      "source_path": "{{ user `source_path` }}",
+      "guest_additions_mode": "disable",
+      "headless": true,
+      "ssh_username":  "{{ user `username`}}",
+      "ssh_password":  "{{ user `password` }}",
+      "shutdown_command": "sudo poweroff",
+      "vboxmanage": [
+        ["modifyvm", "{{ .Name }}", "--cpus"   , "{{ user `build_cpus` }}"   ],
+        ["modifyvm", "{{ .Name }}", "--memory" , "{{ user `build_memory` }}" ]
+      ],
+      "vboxmanage_post": [
+        ["modifyvm", "{{ .Name }}", "--cpus"  , "1"   ],
+        ["modifyvm", "{{ .Name }}", "--memory", "512" ]
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command": "sudo '{{ .Path }}'",
+      "scripts": [
+        "scripts/sys/python3.sh",
+        "scripts/sys/python2.sh",
+        "scripts/sys/node.sh",
+        "scripts/sys/ruby.sh",
+        "scripts/sys/rustlang.sh",
+        "scripts/sys/openjdk.sh",
+        "scripts/sys/docker.sh",
+        "scripts/sys/ansible.sh",
+        "scripts/sys/saltstack.sh",
+        "scripts/sys/puppet.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/user/yaourt.sh",
+        "scripts/user/nvm.sh",
+        "scripts/user/rvm.sh",
+        "scripts/user/golang.sh",
+        "scripts/user/chefdk.sh",
+        "scripts/user/dotnet2.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "execute_command": "sudo '{{ .Path }}'",
+      "scripts": [
+        "scripts/cleanup.sh",
+        "scripts/zerodisk.sh"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "output/devopsbox_arch64_{{ .Provider }}.box"
+    }
+  ]
+}
