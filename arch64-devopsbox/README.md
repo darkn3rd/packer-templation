@@ -1,4 +1,4 @@
-# **Arch Linux DevOps-Box Image**
+# **Arch Linux DevOps-Box Vagrant Image**
 
 This creates a DevOps Box (language platforms, change config. tools, docker) from an existing [ArchLinux](https://www.archlinux.org/) base system.
 
@@ -19,7 +19,7 @@ BOXEN="${HOME}/.vagrant.d/boxes/"
 export SOURCE_PATH="${BOXEN}/${BOXNAME}/${BOXVER}/${PROVIDER}/box.ovf"
 ```
 
-On Windows:
+On Windows in PowerShell:
 
 ```PowerShell
 $BOXVER = '0'
@@ -38,17 +38,15 @@ You may want to edit the create a copy of the `build.json` to custom tailor pack
 packer build -var "source_path=$SOURCE_PATH" build.json
 ```
 
-This system is given 4 CPUs and 4 GB of memory, but if your system can support, you can override the defaults:
+This system is given 4 CPUs and 4 GB of memory to speed up the build process.  If your system can support, you can override the defaults:
 
 ```bash
 packer build \
-  -var "source_path=$SOURCE_PATH" \
+  -var "source_path=${SOURCE_PATH}" \
   -var "build_cpus=4" \
-  -var "build_memory=4096" \
+  -var "build_memory=8192" \
   build.json
-
 ```
-
 
 ## **Installing Image**
 
