@@ -1,6 +1,6 @@
-# **Arch Linux Base Image**
+# **Arch Linux Vagrant Base Image**
 
-This will build a [Virtualbox](https://www.virtualbox.org/wiki/Downloads) [Vagrant](https://www.vagrantup.com/) image from ISO of [ArchLinux](https://www.archlinux.org/) boot CD
+This will build a minimalist [Virtualbox](https://www.virtualbox.org/wiki/Downloads) [Vagrant](https://www.vagrantup.com/) image from an [ArchLinux](https://www.archlinux.org/) boot CD ISO image.
 
 ## **Building Image**
 
@@ -14,7 +14,8 @@ packer build build.json
 vagrant box add --name darkn3rd/arch64 output/packer_arch_virtualbox.box
 ```
 
-Vagrant creates `$HOME/.vagrant.d/boxes/darkn3rd-VAGRANTSLASH-arch64/box.ovf` afterward.
+Vagrant add the image to here:  
+* `$HOME/.vagrant.d/boxes/darkn3rd-VAGRANTSLASH-arch64/`
 
 ## **Testing Image**
 
