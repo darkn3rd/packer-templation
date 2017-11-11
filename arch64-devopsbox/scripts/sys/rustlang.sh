@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-echo "=====> Installing Rust"
+echo "=====> Installing Rust Language"
 pacman -S --noconfirm rust cargo
