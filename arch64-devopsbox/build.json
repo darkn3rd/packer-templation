@@ -34,7 +34,12 @@
         "scripts/sys/node.sh",
         "scripts/sys/ruby.sh",
         "scripts/sys/rustlang.sh",
+        "scripts/sys/elixir.sh",
+        "scripts/sys/dart.sh",
         "scripts/sys/openjdk.sh",
+        "scripts/sys/maven.sh",
+        "scripts/sys/groovy.sh",
+        "scripts/sys/gradle.sh",
         "scripts/sys/docker.sh",
         "scripts/sys/ansible.sh",
         "scripts/sys/saltstack.sh",
@@ -48,6 +53,8 @@
         "scripts/user/nvm.sh",
         "scripts/user/rvm.sh",
         "scripts/user/golang.sh",
+        "scripts/user/hashicorp.sh",
+        "scripts/user/cfengine.sh",
         "scripts/user/chefdk.sh",
         "scripts/user/dotnet2.sh"
       ]
